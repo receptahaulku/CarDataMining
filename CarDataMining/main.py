@@ -146,7 +146,6 @@ def search_data():
                      search_term in car['model'].lower() or
                      (search_term in f"{car['brand'].lower()} {car['model'].lower()}")]
 
-    # Show filtered data
     if filtered_cars:
         for car in filtered_cars:
             values = [car.get(col.replace(' ', '_').lower(), '') for col in columns]
