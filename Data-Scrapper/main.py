@@ -10,12 +10,14 @@ from selenium.webdriver.support import expected_conditions
 driver = webdriver.Chrome()
 driver.maximize_window()
 
+#searching through multiple pages
 for page in range(104,105):
     driver.get("https://dod.com.tr/arac-arama?page=" + str(page))
     WebDriverWait(driver, 10).until(expected_conditions.visibility_of_element_located((By.CLASS_NAME, "do-search-result-table__container__cards")))
     cars = driver.find_elements(By.CLASS_NAME, 'do-vehicle-card__preview')
     car_links = []
     car_num = 1
+    #getting car links
     for car in cars:
         href = car.find_element(By.XPATH,"//*[@id='__layout']/div/div[3]/main/div[2]/div[2]/div[2]/div[3]/div/div[1]/div["+str(car_num)+"]/div/div[1]/div/a").get_attribute('href')
         car_num += 1
